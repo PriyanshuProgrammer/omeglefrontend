@@ -11,7 +11,7 @@ function App(){
     const remotevideo = useRef(null)
 
     useEffect(()=>{
-        const socketserver = io("http://192.168.1.3:3000")
+        const socketserver = io("https://omeglebackend.onrender.com")
         setsocket(socketserver)
         
         const constraints = {
