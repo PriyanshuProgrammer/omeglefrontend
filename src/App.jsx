@@ -35,7 +35,12 @@ function App(){
             console.log("Stream error")
         })
  
-        const configuration = {'iceServers': [{'urls': 'stun:stun.l.google.com:19302'}]}
+        const configuration = {'iceServers': [{'urls': 'stun:stun.l.google.com:19302'},
+            {
+                urls: 'turn:turnserver.com:3478', // Replace with your TURN server's URL
+                username: 'username',  // Your TURN server username
+                credential: 'password' // Your TURN server password
+            }]}
         const pc = new RTCPeerConnection(configuration)
 
         // sending the tracks
@@ -89,8 +94,15 @@ function App(){
     },[])
 
     async function makecall(){
-        const configuration = {'iceServers': [{'urls': 'stun:stun.l.google.com:19302'}]}
+        const configuration = {'iceServers': [{'urls': 'stun:stun.l.google.com:19302'},
+            {
+                urls: 'turn:turnserver.com:3478', // Replace with your TURN server's URL
+                username: 'username',  // Your TURN server username
+                credential: 'password' // Your TURN server password
+            }]}
+        
         const pc = new RTCPeerConnection(configuration);
+
 
         // sending audio stream to the remote peer
         localstream.getTracks().forEach((track)=>{
